@@ -1,16 +1,30 @@
 <div class="container todos">
-  <form class="row" (submit)='addToDo()'>
-    <input 
-    type="text"
-    name="inputToDo"
-    placeholder="Enter todo..."
-    class="col-4 todo-input"
-    [(ngModel)]="inputTodo"
-    />
-    <input type="submit" value="Add Todo" class="col-2 todo-submit">
+  
+  <form (submit)='addToDo()' class="row todolist-form">
+    <mat-form-field class="col" color="primary">
+      <mat-label>Add a new to do</mat-label>
+      <input 
+      matInput
+      type="text"
+      name="inputToDo"
+      placeholder="Enter your todo..."
+      class="col-4 todo-input"
+      [(ngModel)]="inputTodo"
+      />
+    </mat-form-field>
+    <button mat-fab color="primary" type="submit" class="col-2 todo-submit">
+      <mat-icon>add</mat-icon>
+    </button>
   </form>
-  <div *ngFor="let todo of todos; let i=index;" class=" row todo">
-    <div (click)="toggleDone(i)" class="col-4 content  {{(todo.completed && 'text-decoration-line-through')}}">{{todo.content}}</div>
-    <button (click)="deleteToDo(i)"class="col-2 btn-outline-danger delete">Delete</button>
-  </div>
+ <div [hidden]="todos.length===0">
+  <mat-card>
+    <div *ngFor="let todo of todos; let i=index;" class=" row todo">
+      <div (click)="toggleDone(i)" class="col content  {{(todo.completed && 'text-decoration-line-through')}}">{{todo.content}}</div>
+      <button mat-mini-fab (click)="deleteToDo(i)"class="col-1 btn-outline-danger delete"><mat-icon>delete</mat-icon></button>
+    </div>
+  </mat-card>
+
+ </div>
+
+
 </div>
