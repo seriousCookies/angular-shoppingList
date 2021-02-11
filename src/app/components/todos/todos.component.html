@@ -1,6 +1,16 @@
-<div class="todos">
-  <div class="todo">
-    <div class="id">0</div>
-    <div class="content">a todo</div>
+<div class="container todos">
+  <form class="row" (submit)='addToDo()'>
+    <input 
+    type="text"
+    name="inputToDo"
+    placeholder="Enter todo..."
+    class="col-4 todo-input"
+    [(ngModel)]="inputTodo"
+    />
+    <input type="submit" value="Add Todo" class="col-2 todo-submit">
+  </form>
+  <div *ngFor="let todo of todos; let i=index;" class=" row todo">
+    <div (click)="toggleDone(i)" class="col-4 content  {{(todo.completed && 'text-decoration-line-through')}}">{{todo.content}}</div>
+    <button (click)="deleteToDo(i)"class="col-2 btn-outline-danger delete">Delete</button>
   </div>
 </div>
