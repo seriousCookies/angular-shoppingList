@@ -1,5 +1,4 @@
 <div class="container todos">
-  
   <form (submit)='addToDo()' class="row todolist-form">
     <mat-form-field class="col" color="primary">
       <mat-label>Add a new to do</mat-label>
@@ -16,11 +15,14 @@
       <mat-icon>add</mat-icon>
     </button>
   </form>
- <div [hidden]="todos.length===0">
-  <mat-card>
+ <div class= row [hidden]="todos.length===0">
+  <mat-card class="container">
     <div *ngFor="let todo of todos; let i=index;" class=" row todo">
-      <div (click)="toggleDone(i)" class="col content  {{(todo.completed && 'text-decoration-line-through')}}">{{todo.content}}</div>
-      <button mat-mini-fab (click)="deleteToDo(i)"class="col-1 btn-outline-danger delete"><mat-icon>delete</mat-icon></button>
+      <div (click)="toggleDone(i)" class="col content  {{(todo.completed && 'text-decoration-line-through')}}">
+        <mat-checkbox checked={{todo.completed}} class="example-margin"></mat-checkbox>
+        {{todo.content}}
+      </div>
+      <button mat-mini-fab (click)="deleteToDo(i)" class="col-1 btn-outline-danger delete"><mat-icon>delete</mat-icon></button>
     </div>
   </mat-card>
 
