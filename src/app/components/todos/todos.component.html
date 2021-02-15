@@ -15,16 +15,16 @@
       <mat-icon>add</mat-icon>
     </button>
   </form>
- <div class= "row container" [hidden]="todos.length===0">
-  <mat-card class="container">
-    <div *ngFor="let todo of todos; let i=index;" class=" row todo">
-      <mat-checkbox [ngModel]=todo.completed (change)="toggleDone(i)" class="col-1"></mat-checkbox>
-      <div (click)="toggleDone(i)" class="col content  {{(todo.completed && 'text-decoration-line-through')}}">
-        {{todo.content}}
-      </div>
-      <button mat-mini-fab (click)="deleteToDo(i)" class="col-1 btn-outline-danger delete"><mat-icon>delete</mat-icon></button>
-    </div>
-  </mat-card>
+ <div [hidden]="todos.length===0">
+  <div>
+    <mat-card  fxLayoutAlign="space-between center" class="custom align-middle todo {{(todo.completed && 'custom-bg-color')}}" (click)="toggleDone(i)" fxLayout="row" *ngFor="let todo of todos; let i=index;">
+        <mat-checkbox [ngModel]=todo.completed (change)="toggleDone(i)" ></mat-checkbox>
+        <div  class="content {{(todo.completed && 'text-decoration-line-through')}}">
+          {{todo.content}}
+        </div>
+        <button  mat-mini-fab (click)="deleteToDo(i)" class="col-1 delete"><mat-icon>delete</mat-icon></button>
+    </mat-card>
+  </div>
 
  </div>
 
