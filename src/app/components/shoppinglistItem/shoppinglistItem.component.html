@@ -1,0 +1,46 @@
+<div class="container shoppinglistItem">
+  <form (submit)="addshopping()" class="row shoppinglist-form">
+    <mat-form-field class="col" color="primary">
+      <mat-label>Add a new item</mat-label>
+      <input
+        matInput
+        type="text"
+        name="inputshopping"
+        placeholder="Enter your item..."
+        class="col-4 shopping-input"
+        [(ngModel)]="inputshopping"
+      />
+    </mat-form-field>
+    <button mat-fab color="primary" type="submit" class="col-2 shopping-submit">
+      <mat-icon>add</mat-icon>
+    </button>
+  </form>
+  <div [hidden]="shoppinglistItem.length === 0">
+    <div>
+      <mat-card
+        fxLayoutAlign="space-between center"
+        class="custom align-middle shopping {{
+          shopping.completed && 'custom-bg-color'
+        }}"
+        (click)="toggleDone($event, i)"
+        fxLayout="row"
+        *ngFor="let shopping of shoppinglistItem; let i = index"
+      >
+        <mat-checkbox
+          [ngModel]="shopping.completed"
+          (ngModelChange)="toggleDone($event, i)"
+        ></mat-checkbox>
+        <div
+          class="content {{
+            shopping.completed && 'text-decoration-line-through'
+          }}"
+        >
+          {{ shopping.content }}
+        </div>
+        <button mat-mini-fab (click)="deleteshopping(i)" class="col-1 delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>

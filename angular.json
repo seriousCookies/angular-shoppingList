@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-todo-list": {
+    "my-shopping-list": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,16 +13,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-todo-list",
+            "outputPath": "dist/my-shopping-list",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -62,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-todo-list:build"
+            "browserTarget": "my-shopping-list:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-todo-list:build:production"
+              "browserTarget": "my-shopping-list:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-todo-list:build"
+            "browserTarget": "my-shopping-list:build"
           }
         },
         "test": {
@@ -83,10 +80,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
@@ -102,25 +96,23 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "my-todo-list:serve"
+            "devServerTarget": "my-shopping-list:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "my-todo-list:serve:production"
+              "devServerTarget": "my-shopping-list:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "my-todo-list"
+  "defaultProject": "my-shopping-list"
 }
