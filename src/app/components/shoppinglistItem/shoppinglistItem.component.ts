@@ -28,10 +28,12 @@ export class shoppinglistItemComponent implements OnInit {
     this.shoppinglistItem = this.shoppinglistItem.filter((v, i) => i !== id);
   }
   addshopping() {
-    this.shoppinglistItem.push({
-      content: this.inputshopping,
-      completed: false,
-    });
-    this.inputshopping = '';
+    if (this.inputshopping !== '') {
+      this.shoppinglistItem.push({
+        content: this.inputshopping,
+        completed: false,
+      });
+      this.inputshopping = '';
+    }
   }
 }
